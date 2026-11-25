@@ -1,0 +1,24 @@
+[package]
+name = "flashpad"
+version = "1.0.0"
+description = "FlashPad desktop scratchpad"
+edition = "2021"
+rust-version = "1.90"
+
+[lib]
+name = "flashpad_lib"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png", "macos-private-api"] }
+tauri-plugin-autostart = "2"
+tauri-plugin-clipboard-manager = "2"
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-single-instance = "2"
+
+[profile.release]
+opt-level = "s"
+lto = "thin"
+strip = true
