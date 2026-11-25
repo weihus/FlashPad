@@ -42,7 +42,14 @@ A minimal desktop scratchpad that lives in your system tray. Press **Alt / Optio
 | macOS (Intel) | `FlashPad_x.y.z_x64.dmg` |
 | Linux | `FlashPad_x.y.z_amd64.AppImage` / `.deb` / `.rpm` |
 
-> macOS 应用未签名，首次打开可能需要在「系统设置 → 隐私与安全性」中允许，或执行 `xattr -cr /Applications/FlashPad.app`。
+### Apple 芯片 Mac 首次启动
+
+macOS 版本未经 Apple 公证。如果首次打开时提示「FlashPad 已损坏，无法打开」，请确认安装包来自上面的 Releases 页面，将 `FlashPad.app` 拖到「应用程序」，然后在 **Mac 自带的终端**中运行：
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/FlashPad.app"
+open "/Applications/FlashPad.app"
+```
 
 ## 从源码构建
 
@@ -83,7 +90,14 @@ FlashPad is a tiny scratchpad that sits in your system tray. Hit **Alt / Option 
 
 Download the installer for your platform from the [Releases](https://github.com/weihus/FlashPad/releases) page.
 
-> The macOS build is not notarized. On first launch, allow it under *System Settings → Privacy & Security*, or run `xattr -cr /Applications/FlashPad.app`.
+#### First launch on an Apple Silicon Mac
+
+The macOS build is distributed without Apple notarization. If macOS says “FlashPad is damaged and can’t be opened,” confirm that you downloaded the installer from the Releases page above. Drag `FlashPad.app` into Applications, then run these commands in **Terminal on your Mac**:
+
+```bash
+xattr -dr com.apple.quarantine "/Applications/FlashPad.app"
+open "/Applications/FlashPad.app"
+```
 
 ### Build from source
 
